@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 
 app.use(express.static(__dirname + '/assets'));
 app.set('view engine', 'ejs') 
@@ -23,6 +26,6 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
     res.render('contact');
 })
-app.listen(5000, () => {
+app.listen(process.env.PORT, () => {
     console.log('Server is running')
 })
